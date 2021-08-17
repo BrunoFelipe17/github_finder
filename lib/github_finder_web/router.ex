@@ -8,7 +8,7 @@ defmodule GithubFinderWeb.Router do
   scope "/api", GithubFinderWeb do
     pipe_through :api
 
-    get "/", FinderController, :index
+    get "/:username", FinderController, :index
   end
 
   # Enables LiveDashboard only for development
