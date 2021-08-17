@@ -1,5 +1,7 @@
-defmodule GithubFinder.GitHubAPI.Client do
+defmodule GithubFinder.GithubAPI.Client do
   use Tesla
+
+  alias GithubFinder.GithubAPI.Parser
 
   plug Tesla.Middleware.BaseUrl, "https://api.github.com/users/"
   plug Tesla.Middleware.JSON
@@ -10,7 +12,9 @@ defmodule GithubFinder.GitHubAPI.Client do
     |> handle_get()
   end
 
-  defp handle_get({:ok, %Tesla.Env{status: 200} = response}) do
+  defp handle_get({:ok, %Tesla.Env{status: 200, body: body}}) do
+    response = Parser.parser(body)
+
     {:ok, response}
   end
 
