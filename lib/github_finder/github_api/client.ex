@@ -2,12 +2,13 @@ defmodule GithubFinder.GithubAPI.Client do
   use Tesla
 
   alias GithubFinder.GithubAPI.Parser
+  alias GithubFinder.Error
 
-  plug Tesla.Middleware.BaseUrl, "https://api.github.com/users/"
+  @baseurl "https://api.github.com/users/"
   plug Tesla.Middleware.JSON
 
-  def user_repos(username) do
-    "#{username}/repos"
+  def user_repos(url \\ @baseurl, username) do
+    "#{url}#{username}/repos"
     |> get()
     |> handle_get()
   end
@@ -18,7 +19,9 @@ defmodule GithubFinder.GithubAPI.Client do
     {:ok, response}
   end
 
-  defp handle_get({:ok, %Tesla.Env{status: 404}}) do
+  defp handle_get({:ok, %Tesla.Env{status: _status}}) do
     {:error, GithubFinder.Error.build_user_not_found()}
   end
+
+  defp handle_get({:error, reason}), do: {:error, Error.build(:bad_request, reason)}
 end

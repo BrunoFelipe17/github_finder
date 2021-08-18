@@ -1,5 +1,5 @@
 defmodule GithubFinder.FallbackController do
-  use GithubFinder, :controller
+  use GithubFinderWeb, :controller
 
   alias GithubFinder.Error
   alias GithubFinder.ErrorView
