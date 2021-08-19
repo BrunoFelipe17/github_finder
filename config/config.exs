@@ -24,6 +24,10 @@ config :github_finder, GithubFinderWeb.Auth.Guardian,
   issuer: "github_finder",
   secret_key: "pFsllxUBls0fcAQfCe76Hmp/IkCzLzafshTa7q6XWvvyy5oZpYpDvFyGxJVK2pcn"
 
+config :github_finder, GithubFinderWeb.Auth.Pipeline,
+  module: GithubFinderWeb.Auth.Guardian,
+  error_handler: GithubFinderWeb.Auth.ErrorHandler
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

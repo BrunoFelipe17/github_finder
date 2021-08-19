@@ -5,11 +5,20 @@ defmodule GithubFinderWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug GithubFinderWeb.Auth.Pipeline
+  end
+
+  scope "/api", GithubFinderWeb do
+    pipe_through [:api, :auth]
+
+    get "/repos/:username", FinderController, :index
+    post "/user", UserController, :create
+  end
+
   scope "/api", GithubFinderWeb do
     pipe_through :api
 
-    get "/:username", FinderController, :index
-    post "/user", UserController, :create
     post "/user/signin", UserController, :signin
   end
 
