@@ -10,4 +10,6 @@ defmodule GithubFinderWeb.UserView do
       user: user
     }
   end
+
+  def render("signin.json", %{token: token}), do: %{token: token}
 end

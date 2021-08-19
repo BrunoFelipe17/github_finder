@@ -10,6 +10,7 @@ defmodule GithubFinderWeb.Router do
 
     get "/:username", FinderController, :index
     post "/user", UserController, :create
+    post "/user/signin", UserController, :signin
   end
 
   # Enables LiveDashboard only for development

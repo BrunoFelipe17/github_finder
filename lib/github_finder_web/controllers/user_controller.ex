@@ -12,4 +12,12 @@ defmodule GithubFinderWeb.UserController do
       |> render("create.json", token: token, user: user)
     end
   end
+
+  def signin(conn, params) do
+    with {:ok, token} <- Guardian.authenticate(params) do
+      conn
+      |> put_status(:ok)
+      |> render("signin.json", token: token)
+    end
+  end
 end
