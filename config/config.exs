@@ -19,6 +19,11 @@ config :github_finder, GithubFinderWeb.Endpoint,
   live_view: [signing_salt: "mjCrmSmS"]
 
 config :github_finder, GithubFinder.Repo, migration_primary_key: [type: :binary_id]
+
+config :github_finder, GithubFinderWeb.Auth.Guardian,
+  issuer: "github_finder",
+  secret_key: "pFsllxUBls0fcAQfCe76Hmp/IkCzLzafshTa7q6XWvvyy5oZpYpDvFyGxJVK2pcn"
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
