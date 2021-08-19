@@ -24,12 +24,15 @@ defmodule GithubFinder.MixProject do
     ]
   end
 
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
+
   # Specifies your project dependencies.
   #
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.10"},
+      {:phoenix, "~> 1.5.9"},
       {:phoenix_ecto, "~> 4.1"},
       {:ecto_sql, "~> 3.4"},
       {:postgrex, ">= 0.0.0"},
@@ -40,11 +43,12 @@ defmodule GithubFinder.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+      {:pbkdf2_elixir, "~> 1.3"},
+      {:excoveralls, "~> 0.10", only: :test},
+      {:ex_machina, "~> 2.7.0"},
       {:tesla, "~> 1.4"},
       {:hackney, "~> 1.17"},
       {:bypass, "~> 2.1", only: :test},
-      {:ex_machina, "~> 2.7.0", only: :test},
-      {:pbkdf2_elixir, "~> 1.3"},
       {:guardian, "~> 2.0"}
     ]
   end
@@ -63,7 +67,4 @@ defmodule GithubFinder.MixProject do
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
     ]
   end
-
-  defp elixirc_paths(:test), do: ["lib", "test/support"]
-  defp elixirc_paths(_), do: ["lib"]
 end

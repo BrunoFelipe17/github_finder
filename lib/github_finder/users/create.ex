@@ -1,5 +1,5 @@
 defmodule GithubFinder.Users.Create do
-  alias Github.{Error, Repo, User}
+  alias GithubFinder.{Error, Repo, User}
 
   def call(params) do
     params
