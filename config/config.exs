@@ -18,6 +18,7 @@ config :github_finder, GithubFinderWeb.Endpoint,
   pubsub_server: GithubFinder.PubSub,
   live_view: [signing_salt: "mjCrmSmS"]
 
+config :github_finder, GithubFinder.Repo, migration_primary_key: [type: :binary_id]
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

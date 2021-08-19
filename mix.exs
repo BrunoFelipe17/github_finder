@@ -24,10 +24,6 @@ defmodule GithubFinder.MixProject do
     ]
   end
 
-  # Specifies which paths to compile per environment.
-  defp elixirc_paths(:test), do: ["lib", "test/support"]
-  defp elixirc_paths(_), do: ["lib"]
-
   # Specifies your project dependencies.
   #
   # Type `mix help deps` for examples and options.
@@ -48,6 +44,7 @@ defmodule GithubFinder.MixProject do
       {:hackney, "~> 1.17"},
       {:bypass, "~> 2.1", only: :test},
       {:ex_machina, "~> 2.7.0", only: :test},
+      {:pbkdf2_elixir, "~> 1.3"},
       {:guardian, "~> 2.0"}
     ]
   end
