@@ -9,6 +9,7 @@ defmodule GithubFinderWeb.Router do
     pipe_through :api
 
     get "/:username", FinderController, :index
+    post "/user", UserController, :create
   end
 
   # Enables LiveDashboard only for development
